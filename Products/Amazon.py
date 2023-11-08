@@ -39,11 +39,10 @@ def search_results(search_string, user_agents):
 
     results = {}
     serial = 1
-    status_code = 503
 
     session = requests.Session()
 
-    while (status_code == 503):
+    while True:
         headers = {"User-Agent": random.choice(user_agents)}
         print("Amazon process: ")
         print(f"Using User Agent: {headers['User-Agent']}")
@@ -56,11 +55,10 @@ def search_results(search_string, user_agents):
 
             for product in product_listings:
                 serial = scrape_product(product, serial, results)
-
-            status_code = 200
+            break
 
         else:
-            print(f"Failed to retrieve the page. Status Code: {response.status_code} Retrying...\n")
+            print(f"Failed to retrieve the page. Status Code: {response.status_code}. Retrying...\n")
 
     return results
 

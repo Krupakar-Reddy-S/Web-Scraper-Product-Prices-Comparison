@@ -38,12 +38,12 @@ def search_results(search_string, user_agents):
     print("Retrieving products from Snapdeal...")
     print("URL: " + url + "\n")
 
-    session = requests.Session()
     results = {}
     serial = 1
-    status_code = 503
 
-    while status_code == 503:
+    session = requests.Session()
+
+    while True:
         headers = {"User-Agent": random.choice(user_agents)}
         print("Snapdeal process: ")
         print(f"Using User Agent: {headers['User-Agent']}")
@@ -54,15 +54,14 @@ def search_results(search_string, user_agents):
             soup = BeautifulSoup(response.text, 'html.parser')
             product_listings = soup.find_all('div', class_='product-tuple-listing')
 
-            results = {}
-            serial = 1
-
             for product in product_listings:
                 serial = scrape_product(product, serial, results)
 
-            return results
+            break
+
         else:
             print(f"Failed to retrieve the page. Status Code: {response.status_code} Retrying...\n")
+
     return results
 
 

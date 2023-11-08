@@ -35,12 +35,12 @@ def search_results(search_string, user_agents):
     print("\nAttempting to Retrieve products from Flipkart3 Structure...")
     print("URL: " + url + "\n")
 
-    session = requests.Session()
     results = {}
     serial = 1
-    status_code = 500
 
-    while status_code == 500:
+    session = requests.Session()
+
+    while True:
         headers = {"User-Agent": random.choice(user_agents)}
         print("Flipkart3 process: ")
         print(f"Using User Agent: {headers['User-Agent']}")
@@ -53,7 +53,7 @@ def search_results(search_string, user_agents):
 
             for product in product_listings:
                 serial = scrape_product(product, serial, results)
-                status_code = 200
+            break
 
         else:
             print(f"Failed to retrieve the page. Status Code: {response.status_code} Retrying...\n")
