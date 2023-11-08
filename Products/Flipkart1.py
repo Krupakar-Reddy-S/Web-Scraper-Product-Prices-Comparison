@@ -53,7 +53,7 @@ def search_results(search_string, user_agents):
         if response.status_code == 200:
             print()
             soup = BeautifulSoup(response.content, "html.parser")
-            product_listings = soup.find_all("div", {"class": "_1AtVbE"})
+            product_listings = soup.find_all("div", {"class": "_4ddWXP"})
 
             for product in product_listings:
                 serial = scrape_product(product, serial, results)

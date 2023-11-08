@@ -1,2 +1,2 @@
 # Web-Scraper-Product-Prices-Comparison
-Contains a package to extract products from search results from Amazon, Flipkart and snapdeal (Indian), with an option to filter for relevant products and show their graph comparison
+The code scrapes product details from search result of Amazon, Flipkart and snapdeal (All Indian), with an option to filter for relevant products based on Average price and shows their graph comparison.
