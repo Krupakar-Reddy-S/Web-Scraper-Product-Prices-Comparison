@@ -2,3 +2,4 @@
 *.pyo
 Products/__pycache__
 .idea
+.vscode
